@@ -1,3 +1,4 @@
+using AdrianWoronaProject91511.Controllers;
 using AdrianWoronaProject91511.DAL;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -48,6 +49,14 @@ namespace AdrianWoronaProject91511
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllerRoute(
+                    name: "StronyStatyczne",
+                    pattern: "Info/{nazwaPodstrony}",
+                    defaults: new { controller = "Home", action = "StronyStatyczne" });
+            });
 
             app.UseEndpoints(endpoints =>
             {

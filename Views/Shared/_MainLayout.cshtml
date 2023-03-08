@@ -1,0 +1,33 @@
+﻿@model IEnumerable<AdrianWoronaProject91511.Models.Category>
+<html>
+<head>
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/css/site.css" rel="stylesheet" />
+    <title>Sklep @ViewData["Title"]</title>
+</head>
+<body>
+    <header class="menu-bar">
+        <nav class="menu">
+        @foreach(var kategoria in Model)
+        {
+            <a href="#" class="menu-link">@kategoria.Name</a>
+        }
+        </nav>
+    </header>
+    <main class="main-page">
+        @RenderBody()
+    </main>
+    <div class="container">
+        <footer class="py-3 my-4">
+            <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+                <li class="nav-item"><a href="@Url.Action("StronyStatyczne", "Home", new { nazwaPodstrony="AboutUs"})" class="nav-link px-2 text-muted">O nas</a></li>
+                <li class="nav-item"><a href="@Url.Action("StronyStatyczne", "Home", new { nazwaPodstrony="Regulations"})" class="nav-link px-2 text-muted">Regulamin</a></li>
+                <li class="nav-item"><a href="@Url.Action("StronyStatyczne", "Home", new { nazwaPodstrony="Payments"})" class="nav-link px-2 text-muted">Metody płatności</a></li>
+                <li class="nav-item"><a href="@Url.Action("StronyStatyczne", "Home", new { nazwaPodstrony="Contact"})" class="nav-link px-2 text-muted">Kontakt</a></li>
+            </ul>
+            <p class="text-center text-muted">&copy; 2022 Company, Inc</p>
+        </footer>
+    </div>
+</body>
+</html>

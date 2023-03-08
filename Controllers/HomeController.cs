@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AdrianWoronaProject91511.DAL;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -10,21 +11,27 @@ namespace AdrianWoronaProject91511.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        FilmsContext db;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(FilmsContext db)
         {
-            _logger = logger;
+            this.db = db;
         }
 
         public IActionResult Index()
         {
-            return View();
+            var kategorie = db.Categories.ToList();
+            return View(kategorie);
         }
 
         public IActionResult Privacy()
         {
             return View();
+        }
+
+        public IActionResult StronyStatyczne(string nazwaPodstrony)
+        {
+            return View(nazwaPodstrony);
         }
     }
 }
