@@ -53,6 +53,12 @@ namespace AdrianWoronaProject91511
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
+                    name: "Kategorie",
+                    pattern: "{categoryName}",
+                    defaults:new {controller = "Films", action = "FilmsList"}
+                    );
+
+                endpoints.MapControllerRoute(
                     name: "StronyStatyczne",
                     pattern: "Info/{nazwaPodstrony}",
                     defaults: new { controller = "Home", action = "StronyStatyczne" });
@@ -64,6 +70,8 @@ namespace AdrianWoronaProject91511
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
+
+
         }
     }
 }

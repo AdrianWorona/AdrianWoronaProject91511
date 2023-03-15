@@ -1,4 +1,4 @@
-﻿@model IEnumerable<AdrianWoronaProject91511.Models.Category>
+﻿
 <html>
 <head>
     <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
@@ -8,12 +8,7 @@
 </head>
 <body>
     <header class="menu-bar">
-        <nav class="menu">
-        @foreach(var kategoria in Model)
-        {
-            <a href="#" class="menu-link">@kategoria.Name</a>
-        }
-        </nav>
+        @(await Component.InvokeAsync("Menu"))
     </header>
     <main class="main-page">
         @RenderBody()

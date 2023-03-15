@@ -1,0 +1,8 @@
+﻿@model IEnumerable<AdrianWoronaProject91511.Models.Category>
+
+<nav class="menu">
+    @foreach (var kategoria in Model)
+    {
+        <a href="@Url.Action("FilmsList", "Films", new {categoryName = kategoria.Name})" class="menu-link">@kategoria.Name</a>
+    }
+</nav>
