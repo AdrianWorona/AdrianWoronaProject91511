@@ -1,0 +1,21 @@
+﻿@model AdrianWoronaProject91511.Models.Film
+
+<section>
+    <table>
+        <tr>
+            <td>
+                <h1>@Model.Category.Name</h1>
+                @await Component.InvokeAsync("CategoryMenu", new { categoryName = Model.Category.Name})
+            </td>
+            <td>
+                <ul>
+                    <li>Tytuł: @Model.Title</li>
+                    <li>Reżyser: @Model.Director</li>
+                    <li>Opis: @Model.Desc</li>
+                    <li>Cena: @Model.Price zł</li>
+                    <li>Data publikacji: @Model.PublishDate</li>
+                </ul>
+            </td>
+        </tr>
+    </table>
+</section>

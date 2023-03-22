@@ -1,8 +1,25 @@
-﻿@model IEnumerable<AdrianWoronaProject91511.Models.Film>
+﻿@model AdrianWoronaProject91511.ViewModels.CategoryFilmsViewModel
 
+
+@{
+    ViewData["Title"] = Model.Category.Name;
+}
 <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
 <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
 
+<table>
+    <tr>
+        @foreach(var film in Model.RecentFilms)
+        {
+            <td>
+                <h2>@film.Title</h2>
+                <p>@film.Desc</p>
+            </td>
+        }
+    </tr>
+</table>
+
+<h1>@Model.Category.Name</h1>
     <table>
         <thead>
             <tr>
@@ -13,13 +30,16 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (var film in Model)
+            @foreach (var film in Model.CategoryFilms)
             {
                 <tr>
                     <td>@film.Title</td>
                     <td>@film.Director</td>
                     <td>@film.Desc</td>
                     <td>@film.Price</td>
+                    <td>
+                        <a href="@Url.Action("Details", "Films", new {filmId = film.Id})">&#128270;</a>
+                    </td>
                 </tr>
             }
         </tbody>
