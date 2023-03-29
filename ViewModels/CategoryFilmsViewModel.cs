@@ -10,5 +10,6 @@ namespace AdrianWoronaProject91511.ViewModels
         public IEnumerable<Film> RecentFilms { get; set; }
 
         public Category Category { get; set; }
+
     }
 }

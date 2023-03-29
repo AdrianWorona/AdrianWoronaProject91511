@@ -12,16 +12,21 @@ namespace AdrianWoronaProject91511.Models
 
         [Required (ErrorMessage ="Add title")]
         public string Title { get; set; } //Required sprawia, że wartość jest wymagana
+
         public string Director { get; set; }
 
         [StringLength (500)]
         public string Desc { get; set; }
+
         public decimal? Price { get; set; } //Wartość nieobowiązkowa
 
         public DateTime PublishDate { get; set; }
 
+        public string PosterName { get; set; }
+
         //[ForeignKey("Category")] Używamy kiedy chcemy mieć inną nazwę klucza obcego
         public int CategoryId { get; set; }
+
         public Category Category { get; set;}
 
         //Sposób 2

@@ -1,8 +1,15 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+@model AdrianWoronaProject91511.ViewModels.AllFilmsViewModel
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <ul>
+        @foreach(var film in Model.Posters)
+        {
+            <li>
+                <img src="~/content/@film.PosterName" width="200px"/>
+            </li>
+        }
+    </ul>
 </div>

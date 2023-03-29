@@ -54,7 +54,8 @@ namespace AdrianWoronaProject91511.DAL
                       Director = "Marcus Nispel",
                       Desc = "20 sierpnia 1973 roku teksańska policja trafiła do stojącego na uboczu domu Thomasa Hewitta - byłego pracownika lokalnej rzeźni. Na miejscu odkryli rozkładające się zwłoki 33 osób, które zostały zamordowane przez psychopatycznego zabójcę noszącego na twarzy maskę z ludzkiej skóry i posługującego się piłą mechaniczną.",
                       Price = 10m,
-                      PublishDate = new System.DateTime(2022, 12, 10)
+                      PublishDate = new System.DateTime(2022, 12, 10),
+                      PosterName = "teksanska-masakra-pila-mechaniczna.jpg"
                   },
                 new Film()
                 {
@@ -64,7 +65,8 @@ namespace AdrianWoronaProject91511.DAL
                     Director = "Joel Schumacher",
                     Desc = "Mężczyzna dostaje obsesji na punkcie książki, która według niego Descuje i przewiduje jego życie i przyszłość.",
                     Price = 14m,
-                    PublishDate = new System.DateTime(2022, 11, 15)
+                    PublishDate = new System.DateTime(2022, 11, 15),
+                    PosterName = "numer-23.jpg"
                 },
                 new Film()
                 {
@@ -74,7 +76,8 @@ namespace AdrianWoronaProject91511.DAL
                     Director = "David Koepp",
                     Desc = "Uznany pisarz przenosi się na prowincję, by w spokoju tworzyć kolejne książki. Wkrótce odwiedzi go tajemniczy mężczyzna, który oskarży Raineya o plagiat.",
                     Price = 12m,
-                    PublishDate = new System.DateTime(2023, 01, 21)
+                    PublishDate = new System.DateTime(2023, 01, 21),
+                    PosterName = "sekretne-okno.jpg"
                 },
                 new Film()
                 {
@@ -84,7 +87,8 @@ namespace AdrianWoronaProject91511.DAL
                     Director = "Peter Jackson",
                     Desc = "Podróż hobbita z Shire i jego ośmiu towarzyszy, której celem jest zniszczenie potężnego pierścienia pożądanego przez Czarnego Władcę - Saurona.",
                     Price = 20m,
-                    PublishDate = new System.DateTime(2023, 03, 10)
+                    PublishDate = new System.DateTime(2023, 03, 10),
+                    PosterName = "wladca-pierscieni-druzyna-pierscienia.jpg"
                 },
                 new Film()
                 {
@@ -94,7 +98,8 @@ namespace AdrianWoronaProject91511.DAL
                     Director = "Robert Schwentke",
                     Desc = "Emerytowani agenci specjalni CIA zostają wrobieni w zamach. By się ratować, muszą reaktywować stary zespół.",
                     Price = 11m,
-                    PublishDate = new System.DateTime(2022, 07, 18)
+                    PublishDate = new System.DateTime(2022, 07, 18),
+                    PosterName = "red.jpg"
                 },
                 new Film()
                 {
@@ -104,7 +109,8 @@ namespace AdrianWoronaProject91511.DAL
                     Director = "Tomasz Sekielski",
                     Desc = "Dziennikarz śledczy rozmawia z dziewięcioma księżmi katolickimi, którzy dopuścili się zbrodni pedofilii i molestowania nieletnich, a także ich ofiarami.",
                     Price = 0m,
-                    PublishDate = new System.DateTime(2022, 05, 06)
+                    PublishDate = new System.DateTime(2022, 05, 06),
+                    PosterName = "tylko-nie-mow-nikomu.jpg"
                 },
                 new Film()
                 {
@@ -114,7 +120,8 @@ namespace AdrianWoronaProject91511.DAL
                     Director = "Neil Burger",
                     Desc = "Wiedeń u progu XX w. Syn rzemieślnika, iluzjonista Eisenheim, wykorzystuje niezwykłe umiejętności, by zdobyć miłość arystokratki, narzeczonej austro-węgierskiego księcia.",
                     Price = 13m,
-                    PublishDate = new System.DateTime(2023, 02, 05)
+                    PublishDate = new System.DateTime(2023, 02, 05),
+                    PosterName = "iluzjonista.jpg"
                 },
                 new Film()
                 {
@@ -124,7 +131,8 @@ namespace AdrianWoronaProject91511.DAL
                     Director = "Vincenzo Natali",
                     Desc = "Grupa osób budzi się w pełnym śmiertelnych pułapek sześcianie. Nieznajomi muszą zacząć współpracować ze sobą, by przeżyć.",
                     Price = 15m,
-                    PublishDate = new System.DateTime(2022, 12, 08)
+                    PublishDate = new System.DateTime(2022, 12, 08),
+                    PosterName = "cube.jpg"
                 },
                 new Film()
                 {
@@ -134,7 +142,8 @@ namespace AdrianWoronaProject91511.DAL
                     Director = "Clive Barker",
                     Desc = "Frank Cotton nabywa tajemniczą kostkę, za pomocą której można przywołać demony z piekła.",
                     Price = 16m,
-                    PublishDate = new System.DateTime(2023, 01, 02)
+                    PublishDate = new System.DateTime(2023, 01, 02),
+                    PosterName = "hellriser.jpg"
                 },
                 new Film()
                 {
@@ -144,7 +153,8 @@ namespace AdrianWoronaProject91511.DAL
                     Director = "Jonathan Demme",
                     Desc = "Seryjny morderca i inteligentna agentka łączą siły, by znaleźć przestępcę obdzierającego ze skóry swoje ofiary.",
                     Price = 17m,
-                    PublishDate = new System.DateTime(2022, 02, 16)
+                    PublishDate = new System.DateTime(2022, 02, 16),
+                    PosterName = "milczenie-owiec.jpg"
                 }
                 );
         }
