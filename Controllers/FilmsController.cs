@@ -58,17 +58,33 @@ namespace AdrianWoronaProject91511.Controllers
         public IActionResult AddFilm(AddFilmViewModel model)
         {
             var folderPath = Path.Combine(env.WebRootPath, "content");
+            var uniqueName = model.Poster.FileName + Guid.NewGuid();
             var posterPath = Path.Combine(folderPath, model.Poster.FileName);
 
             model.Poster.CopyTo(new FileStream(posterPath, FileMode.Create));
-
             model.NewFilm.PublishDate = DateTime.Now;
+            model.NewFilm.PosterName = uniqueName;
 
-            model.NewFilm.PosterName = model.Poster.FileName;
             db.Films.Add(model.NewFilm);
-
             db.SaveChanges();
+
             return RedirectToAction("Index", "Home");
         }
+
+        [HttpPost]
+        public IActionResult Search(string text)
+        {
+            var films = from f in db.Films select f;
+
+            if (!String.IsNullOrEmpty(text))
+            {
+                films = films.Where(f => f.Title.Contains(text));
+                return View(films.ToList());
+            }
+
+            return RedirectToAction("Index", "Home");
+
+        }
+
     }
 }
