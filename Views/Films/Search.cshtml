@@ -1,4 +1,4 @@
-﻿@model IEnumerable<AdrianWoronaProject91511.Models.Films>
+﻿@model IEnumerable<AdrianWoronaProject91511.Models.Film>
 
 <table>
     <thead>
@@ -10,7 +10,7 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var film in Model.CategoryFilms)
+        @foreach (var film in Model)
         {
             <tr>
                 <td>@film.Title</td>

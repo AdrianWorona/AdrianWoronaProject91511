@@ -1,0 +1,41 @@
+﻿@model AdrianWoronaProject91511.Models.Film
+
+<section>
+    <table>
+        <tr>
+@*            <td>
+                <h1>@Model.Category.Name</h1>
+                @(await Component.InvokeAsync("CategoryMenu", new { categoryName = Model.Category.Name }))
+            </td>*@
+            <td>
+                @using (Html.BeginForm("EditFilm", "Films"))
+                {
+                    <ul>
+                        <li><img src="~/content/@Model.PosterName" width="200px" alt="Plakat filmu" /></li>
+                        <li>
+                            Tytuł:
+                            @Html.TextBoxFor(f => f.Title, new {@class = "form-control"})
+                        </li>
+                        <li>
+                            Reżyser:
+                            @Html.TextBoxFor(f => f.Director, new {@class = "form-control"})
+                        </li>
+                        <li>
+                            Opis:
+                            @Html.TextBoxFor(f => f.Desc, new {@class = "form-control"})
+                        </li>
+                        <li>
+                            Cena:
+                            @Html.TextBoxFor(f => f.Price, new {@class = "form-control"})
+                        </li>
+                        <li>
+                            Data publikacji:
+                            @Model.PublishDate
+                        </li>
+                    </ul>
+                    <button type="submit" class="btn btn-primary">Zapisz zmiany</button>
+                }
+            </td>
+        </tr>
+    </table>
+</section>

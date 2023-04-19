@@ -1,4 +1,5 @@
 ﻿using AdrianWoronaProject91511.DAL;
+using AdrianWoronaProject91511.Models;
 using AdrianWoronaProject91511.ViewModels;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -84,6 +85,29 @@ namespace AdrianWoronaProject91511.Controllers
 
             return RedirectToAction("Index", "Home");
 
+        }
+
+        [HttpGet]
+        public IActionResult EditFilm(int filmId)
+        {
+            var film = db.Films.Where(f => f.Id == filmId).FirstOrDefault();
+
+            return View(film);
+        }
+
+        [HttpPost]
+        public IActionResult EditFilm(Film film)
+        {
+            var findFilm = db.Films.Where(f => f.Id == film.Id).FirstOrDefault();
+            findFilm.Title = film.Title;
+            findFilm.Director = film.Director;
+            findFilm.Desc = film.Desc;
+            findFilm.Price = film.Price;
+
+            db.Entry(findFilm).State = EntityState.Modified;
+            db.SaveChanges();
+
+            return RedirectToAction("Details", "Films", new {filmId = findFilm});
         }
 
     }

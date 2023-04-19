@@ -15,6 +15,7 @@
                     <li>Opis: @Model.Desc</li>
                     <li>Cena: @Model.Price zł</li>
                     <li>Data publikacji: @Model.PublishDate</li>
+                    <a href="@Url.Action("EditFilm", "Films", new {id = Model.Id})" class="btn btn-primary">Edytuj film</a>
                 </ul>
             </td>
         </tr>
