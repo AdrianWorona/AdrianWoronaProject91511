@@ -39,6 +39,9 @@
                     <td>
                         <a href="@Url.Action("Details", "Films", new {filmId = film.Id})">&#128270;</a>
                     </td>
+                    <td>
+                    <a href="@Url.Action("Buy", "Cart", new {id = film.Id})">&#128722;</a>
+                    </td>
                 </tr>
             }
         </tbody>
