@@ -1,21 +1,52 @@
 ﻿@model IEnumerable<AdrianWoronaProject91511.Models.CartItem>
-@{
+@*@{
     Layout = null;
-}
+}*@
 <h1>Koszyk</h1>
 
 <table class="table">
+    <tr>
+        <th>Tytuł</th>
+        <th>Ilość</th>
+        <th>Cena</th>
+        <th></th>
+    </tr>
     @foreach (var cartItem in Model)
     {
-        <tr>
+        <tr id="cartItem-@cartItem.Film.Id">
             <td>@cartItem.Film.Title</td>
-            <td>@cartItem.Quantity</td>
-            <td>@cartItem.Value</td>
+            <td id="itemQuantity-@cartItem.Film.Id">@cartItem.Quantity</td>
+            <td id="itemValue-@cartItem.Film.Id">@cartItem.Value</td>
+            <td class="trash" data-id="@cartItem.Film.Id">&#128465</td>
         </tr>
     }
     
 </table>
 
 <div>
-    Razem: @ViewBag.TotalPrice;
+    Razem: <span id="total">@ViewBag.TotalPrice</span>
 </div>
+
+@section Scripts {
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+    <script type="text/javascript">
+        $(".trash").click(function (){
+            //console.log("kliknięto na usunięcie");
+            var idCartItem = $(this).data('id');
+            if(idCartItem != ''){
+                $.post("/Cart/RemoveFromCart", { "id": idCartItem }, function (response) {
+                    console.log(response);
+                    if(response.itemQuantity == 0){
+                        $("#cartItem-" + response.itemId).fadeOut(500);
+                    }
+                    else{
+                        $("#itemQuantity-" + response.itemId).text(response.itemQuantity);
+                        $("#itemValue-" + response.itemId).text(response.itemValue);
+                    }
+                    $("#total").text(response.totalValue);
+                });
+            }
+        });
+    </script>
+}

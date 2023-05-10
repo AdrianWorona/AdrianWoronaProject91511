@@ -57,7 +57,7 @@ namespace AdrianWoronaProject91511
             {
                 endpoints.MapControllerRoute(
                     name: "Kategorie",
-                    pattern: "{categoryName}",
+                    pattern: "Category/{categoryName}",
                     defaults:new {controller = "Films", action = "FilmsList"}
                     );
 

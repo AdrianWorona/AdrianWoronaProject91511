@@ -1,6 +1,7 @@
 ﻿using AdrianWoronaProject91511.DAL;
 using AdrianWoronaProject91511.Infrastructure;
 using AdrianWoronaProject91511.Models;
+using AdrianWoronaProject91511.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,10 +18,15 @@ namespace AdrianWoronaProject91511.Controllers
             this.db = db;
         }
 
+        [Route("Koszyk")]
         public IActionResult Index()
         {
             var cart = SessionManager.GetObjectFromJson<List<CartItem>>(HttpContext.Session, Consts.CartSessionKey);
 
+            if(cart == null)
+            {
+                cart = new List<CartItem>();
+            }
             ViewBag.totalPrice = cart.Sum(i => i.Quantity * i.Film.Price);
             return View(cart);
         }
@@ -63,6 +69,20 @@ namespace AdrianWoronaProject91511.Controllers
             }
 
             return -1;
+        }
+
+        public IActionResult RemoveFromCart(int id)
+        {
+            var model = new ItemRemoveViewModel()
+            {
+                ItemId = id,
+                ItemQuantity = CartManager.RemoveFromCart(HttpContext.Session, id),
+                TotalValue = CartManager.GetCartValue(HttpContext.Session),
+                ItemValue = CartManager.GetItemValue(HttpContext.Session, id)
+            };
+
+            return Json(model);
+
         }
     }
 }
