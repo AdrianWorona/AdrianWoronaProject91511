@@ -1,4 +1,5 @@
-﻿using AdrianWoronaProject91511.Models;
+﻿using AdrianWoronaProject91511.DAL;
+using AdrianWoronaProject91511.Models;
 using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
@@ -18,6 +19,7 @@ namespace AdrianWoronaProject91511.Infrastructure
             if(thisFilm.Quantity > 1)
             {
                 thisFilm.Quantity--;
+                thisFilm.Value -= thisFilm.Film.Price;
                 quantity = thisFilm.Quantity;
             }
             else
@@ -35,12 +37,20 @@ namespace AdrianWoronaProject91511.Infrastructure
             return cart.Sum(i => i.Value);
         }
 
-        internal static decimal GetItemValue(ISession session, int id)
+        internal static decimal? GetItemValue(ISession session, int id)
         {
-            throw new NotImplementedException();
+            var cart = GetItems(session);
+            foreach(var item in cart)
+            {
+                if(id == item.Film.Id)
+                {
+                    return cart.Sum(f => f.Value);
+                }
+            }
+            return 0;
         }
 
-        private static List<CartItem> GetItems(ISession session)
+        public static List<CartItem> GetItems(ISession session)
         {
             var cart = SessionManager.GetObjectFromJson<List<CartItem>>(session, Consts.CartSessionKey);
 
@@ -50,6 +60,34 @@ namespace AdrianWoronaProject91511.Infrastructure
             }
 
             return cart;
+        }
+
+        public static void AddToCart(ISession session, FilmsContext db, int filmId)
+        {
+            var cart = GetItems(session);
+            var thisfilm = cart.Find( f => f.Film.Id == filmId);
+
+            if(thisfilm != null)
+            {
+                thisfilm.Quantity++;
+                thisfilm.Value += thisfilm.Film.Price;
+            }
+            else
+            {
+                var newCartItem = db.Films.Where(id =>  id.Id == filmId).SingleOrDefault();
+
+                if(newCartItem != null)
+                {
+                    var cartItem = new CartItem
+                    {
+                        Film = newCartItem,
+                        Quantity = 1,
+                        Value = newCartItem.Price
+                    };
+                    cart.Add(cartItem);
+                }
+            }
+            SessionManager.SetObjectAsJson(session, Consts.CartSessionKey, cart);
         }
     }
 }

@@ -21,54 +21,20 @@ namespace AdrianWoronaProject91511.Controllers
         [Route("Koszyk")]
         public IActionResult Index()
         {
-            var cart = SessionManager.GetObjectFromJson<List<CartItem>>(HttpContext.Session, Consts.CartSessionKey);
+            var cart = CartManager.GetItems(HttpContext.Session);
 
-            if(cart == null)
-            {
-                cart = new List<CartItem>();
-            }
-            ViewBag.totalPrice = cart.Sum(i => i.Quantity * i.Film.Price);
+            //if(cart == null)
+            //{
+            //    cart = new List<CartItem>();
+            //}
+            ViewBag.totalPrice = CartManager.GetCartValue(HttpContext.Session);
             return View(cart);
         }
 
         public IActionResult Buy(int id)
         {
-            var film = db.Films.Find(id);
-            if(SessionManager.GetObjectFromJson<List<CartItem>>(HttpContext.Session, Consts.CartSessionKey) == null)
-            {
-                var cart = new List<CartItem>();
-                cart.Add(new CartItem { Film = film, Quantity = 1, Value = film.Price});
-                SessionManager.SetObjectAsJson(HttpContext.Session, Consts.CartSessionKey, cart);
-            }
-            else
-            {
-                var cart = SessionManager.GetObjectFromJson<List<CartItem>>(HttpContext.Session, Consts.CartSessionKey);
-                var index = GetIndex(id, cart);
-                if (index == -1)
-                {
-                    cart.Add(new CartItem { Film = film, Quantity = 1, Value = film.Price });
-                }
-                else
-                {
-                    cart[index].Quantity++;
-                    cart[index].Value+=film.Price;
-                }
-                SessionManager.SetObjectAsJson(HttpContext.Session, Consts.CartSessionKey, cart);
-            }
+            CartManager.AddToCart(HttpContext.Session, db, id);
             return RedirectToAction("Index");
-        }
-
-        int GetIndex(int id, List<CartItem> cart)
-        {
-            for(int i = 0; i < cart.Count; i++)
-            {
-                if (cart[i].Film.Id == id)
-                {
-                    return i;
-                }
-            }
-
-            return -1;
         }
 
         public IActionResult RemoveFromCart(int id)
