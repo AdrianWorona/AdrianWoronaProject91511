@@ -1,0 +1,24 @@
+﻿@model AdrianWoronaProject91511.ViewModels.LoginViewModel
+
+<p class="alert-warning">
+    @ViewBag.result
+    @Html.ValidationSummary()
+</p>
+<section>
+    @using (Html.BeginForm("Login", "Account"))
+    {
+        <ul>
+            <li>
+                Email:
+                @Html.TextBoxFor(f => f.Login, new {@class = "form-control"})
+                <span class="alert-warning">@Html.ValidationMessageFor(f => f.Login)</span>
+            </li>
+            <li>
+                Password:
+                @Html.TextBoxFor(f => f.Password, new {@class = "form-control"})
+                <span class="alert-warning">@Html.ValidationMessageFor(f => f.Password)</span>
+            </li>
+        </ul>
+        <button type="submit" class="btn btn-primary">Zaloguj się</button>
+    }
+</section>

@@ -44,7 +44,8 @@ namespace AdrianWoronaProject91511.Infrastructure
             {
                 if(id == item.Film.Id)
                 {
-                    return cart.Sum(f => f.Value);
+                    return item.Value;
+                    //return cart.Sum(f => f.Value);
                 }
             }
             return 0;

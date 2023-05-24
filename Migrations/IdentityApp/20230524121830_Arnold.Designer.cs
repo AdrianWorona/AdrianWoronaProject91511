@@ -4,14 +4,16 @@ using AdrianWoronaProject91511.DAL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace AdrianWoronaProject91511.Migrations.IdentityApp
 {
     [DbContext(typeof(IdentityAppContext))]
-    partial class IdentityAppContextModelSnapshot : ModelSnapshot
+    [Migration("20230524121830_Arnold")]
+    partial class Arnold
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -1,0 +1,44 @@
+﻿@model AdrianWoronaProject91511.ViewModels.RegisterViewModel
+
+<p class="alert-warning">
+    @ViewBag.result
+    @Html.ValidationSummary()
+</p>
+<section>
+    @using (Html.BeginForm("Register", "Account"))
+    {
+        <ul>
+            <li>
+                Email:
+                @Html.TextBoxFor(f => f.Email, new {@class = "form-control"})
+                <span class="alert-warning">@Html.ValidationMessageFor(f => f.Email)</span>
+            </li>
+            <li>
+                Nazwa użytkownika:
+                @Html.TextBoxFor(f => f.UserName, new {@class = "form-control"})
+                <span class="alert-warning">@Html.ValidationMessageFor(f => f.UserName)</span>
+            </li>
+            <li>
+                Imie:
+                @Html.TextBoxFor(f => f.FirstName, new {@class = "form-control"})
+                <span class="alert-warning">@Html.ValidationMessageFor(f => f.FirstName)</span>
+            </li>
+            <li>
+                Nazwisko:
+                @Html.TextBoxFor(f => f.LastName, new {@class = "form-control"})
+                <span class="alert-warning">@Html.ValidationMessageFor(f => f.LastName)</span>
+            </li>
+            <li>
+                Hasło:
+                @Html.TextBoxFor(f => f.Password, new {@class = "form-control", @type = "password"})
+                <span class="alert-warning">@Html.ValidationMessageFor(f => f.Password)</span>
+            </li>
+            <li>
+                Powtórz hasło:
+                @Html.TextBoxFor(f => f.CheckPassword, new {@class = "form-control", @type = "password"})
+                <span class="alert-warning">@Html.ValidationMessageFor(f => f.CheckPassword)</span>
+            </li>
+        </ul>
+        <button type="submit" class="btn btn-primary">Zarejestruj się</button>
+    }
+</section>
